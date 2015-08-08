@@ -23,7 +23,11 @@
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+        {{#if session.isAuthenticated}}
+          <p><a {{ action 'invalidateSession' }}>Logout</a></p>
+        {{else}}
+          <p><a {{ action 'sessionRequiresAuthentication' }}>Login</a></p>
+        {{/if}}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
